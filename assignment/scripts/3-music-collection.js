@@ -11,16 +11,32 @@ function addToCollection(songTitle,songArtist,songYearPublished){
 }
 
 addToCollection("songTitle","songArtist","someYear");
+addToCollection("anotherSong","anotherArtist","anotherYear")
 console.log(collection[0]);
 
 
-function showCollection(arrayItem){
-  object = collection[arrayItem];
-  console.log(object)
-  title = object.song;
-  artist = object.artist;
-  year  = object.year;
-  console.log(`${title} by ${artist}, published in ${year}`)
+function showCollection(array){
+    for (obj of array){
+    title = obj.song;
+    artist = obj.artist;
+    year  = obj.year;
+    console.log(`${title} by ${artist}, published in ${year}`)
+  }
 }
 
-showCollection(0)
+showCollection(collection);
+
+
+function findByArtist(artist){
+  artistSongs = [];
+  for (item of collection){
+    if (item.artist==artist){
+      artistSongs.push(item);
+    }
+  }
+  console.log(artistSongs);
+}
+
+addToCollection("differentSong","songArtist","differentYear");
+findByArtist("songArtist");
+findByArtist("artistNotInCollection");
